@@ -15,7 +15,7 @@ def lectura(nombre):
 
     for linea in archivo:
       if linea != "\n" or linea != "nan" or linea != " " or linea != "":
-        array.append(float(linea.split()[int(lin)]))
+        array.append(linea.split()[int(lin)])
 
   archivo.close()
   return array
