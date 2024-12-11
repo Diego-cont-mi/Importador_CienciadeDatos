@@ -85,7 +85,7 @@ def moda(lista):
       dic[elemento] = 1
   return max(dic, key=dic.get), max(dic.values())
 
-def moda(lista):
+def modas(lista):
   dic = {}
   for elemento in lista:
     if elemento in dic:
