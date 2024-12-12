@@ -139,6 +139,7 @@ def desviacion_estandar(lista):
   return varianza(lista)**0.5
 
 def percentil(vals_in, q):
+    import math
     """
     Calcula el percentil q de una lista de datos.
 
