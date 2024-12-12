@@ -7,14 +7,14 @@ Original file is located at
     https://colab.research.google.com/drive/1JxL1pIP62AScIkyLl8KsVygUK9pprr9J
 """
 
-def lectura(nombre):
+def lecturaconfloat(nombre):
   with open(nombre,"r") as archivo:
     array = []
     archivo.readline()
     lin = input("Ingrese la columna que desea leer: ")
 
     for linea in archivo:
-      if linea != "\n" or linea != "nan" or linea != " " or linea != "":
+      if linea != '\n' and 'nan' not in linea and linea != " " and linea != "":
         linea = linea.split()
         array.append(float(linea[int(lin)]))
 
