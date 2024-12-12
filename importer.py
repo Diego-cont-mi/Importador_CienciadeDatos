@@ -7,6 +7,20 @@ Original file is located at
     https://colab.research.google.com/drive/1JxL1pIP62AScIkyLl8KsVygUK9pprr9J
 """
 
+def lecturageneral(nombre):
+  with open(nombre,"r") as archivo:
+    array = []
+    archivo.readline()
+    lin = input("Ingrese la columna que desea leer: ")
+
+    for linea in archivo:
+      if linea != '\n' and linea != " " and linea != "":
+        linea = linea.split()
+        array.append(linea[int(lin)])
+        
+  archivo.close()
+  return array
+    
 def lecturaconfloat(nombre):
   with open(nombre,"r") as archivo:
     array = []
