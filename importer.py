@@ -124,16 +124,6 @@ def varianza(lista):
 def desviacion_estandar(lista):
   return varianza(lista)**0.5
 
-def media_aritmetica(lista):
-  mitad_list = len(lista)//2
-  lista.sort()
-  if len(lista)%2 == 0:
-    mediana = lista[mitad_list] + lista[mitad_list-1]
-    return mediana/2
-  else:
-    mediana = lista[mitad_list]
-  return mediana
-
 def percentil(vals_in, q):
     """
     Calcula el percentil q de una lista de datos.
