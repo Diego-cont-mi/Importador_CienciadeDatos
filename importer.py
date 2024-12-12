@@ -35,7 +35,6 @@ def lecturanofloat(nombre):
   archivo.close()
   return array
 
-print(lecturanofloat("/content/bsc_sel.dat"))
 def encabezado(nombre):
   with open(nombre,"r") as archivo:
     content = archivo.readline()
