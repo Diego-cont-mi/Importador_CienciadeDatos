@@ -20,7 +20,22 @@ def lectura(nombre):
 
   archivo.close()
   return array
+    
+def lecturanofloat(nombre):
+  with open(nombre,"r") as archivo:
+    array = []
+    archivo.readline()
+    lin = input("Ingrese la columna que desea leer: ")
 
+    for linea in archivo:
+      if linea != "\n" or linea != "nan" or linea != " " or linea != "":
+        linea = linea.split()
+        array.append(linea[int(lin)])
+
+  archivo.close()
+  return array
+
+print(lecturanofloat("/content/bsc_sel.dat"))
 def encabezado(nombre):
   with open(nombre,"r") as archivo:
     content = archivo.readline()
