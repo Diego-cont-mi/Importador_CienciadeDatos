@@ -190,6 +190,9 @@ def iqr(vals_in):
         return q75 - q25
     return None
 
+def FYD(lista):
+    return 2*iqr(lista)*len(lista)**(-1/3)
+
 def mse(x,y,theta): #minimum square error
   m,b = theta
   res = [(y_i - (m*x_i+b)**2) for x_i, y_i in zip(x,y)]
