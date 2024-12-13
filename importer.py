@@ -71,6 +71,17 @@ def buscadorindexINT(lista, nombre):
   return indices
     
 def correlacion(x,y):
+  """
+  Función que calcula el coeficiente de correlación dadas 2 listas para ambos ejes
+  --------
+  Parámetros:
+  x: lista en el eje x
+  y: lista en el eje y
+  --------
+  nota: si o si deben ser listas
+  --------
+  retorna: coeficiente de correlación 
+  """
   xmed = mim.media_aritmetica(x)
   ymed = mim.media_aritmetica(y)
 
@@ -88,6 +99,16 @@ def correlacion(x,y):
   return numerador / (denom**(1/2))
 
 def lecturageneral(nombre):
+  """
+  Función que lee la columna de un archivo dado de manera general, sin depuraciones de nan,
+  sin embargo depura valores no existentes aparte del nan
+  --------
+  Parámetros:
+  nombre: dirección del archivo a leer
+  lin: input que pide el valor de la columna para leer a discresión
+  --------
+  retorna: lista de los valores de la columna no depurados ni transformados
+  """
   with open(nombre,"r") as archivo:
     array = []
     archivo.readline()
@@ -102,6 +123,16 @@ def lecturageneral(nombre):
   return array
     
 def lecturaconfloat(nombre):
+  """
+  Función que lee la columna de un archivo dado a discresión, o sea, lee la columna 
+  depurando los nan
+  --------
+  Parámetros:
+  nombre: dirección del archivo a leer
+  lin: input que pide la columna a leer a discresión
+  --------
+  retorna: lista de los valores de la columna depurado de nans
+  """
   with open(nombre,"r") as archivo:
     array = []
     archivo.readline()
@@ -114,22 +145,24 @@ def lecturaconfloat(nombre):
 
   archivo.close()
   return array
-    
-def lecturanofloat(nombre):
-  with open(nombre,"r") as archivo:
-    array = []
-    archivo.readline()
-    lin = input("Ingrese la columna que desea leer: ")
 
-    for linea in archivo:
-      if linea != "\n" or linea != "nan" or linea != " " or linea != "":
-        linea = linea.split()
-        array.append(linea[int(lin)])
-
-  archivo.close()
-  return array
 
 def encabezado(nombre):
+  """
+  Función que consigue solo la primera linea de un archivo,
+  de esta manera uno puede conseguir los encabezados de cada columna,
+  este complementa las funciones de lectura anteriores, sin embargo,
+  la lista retornada se le debe restar 1 al indice del nombre de la 
+  columna a querer conseguir
+  --------
+  parámetros:
+  nombre: dirección del archivo a conseguir el encabezado
+  --------
+  nota: poco completo, pienso seguir trabajando en esta función para utilizarla con
+  las funciones de lectura anterior de manera conjunta
+  --------
+  retorna: lista de la primera linea de un archivo
+  """
   with open(nombre,"r") as archivo:
     content = archivo.readline()
     for palabra in content:
@@ -144,10 +177,11 @@ def encabezado(nombre):
 def promedio(list):
   """
   Calcula el promedio de una lista de números
-  Args:
-    lista: lista de números
-  Returns:
-    promedio: promedio de la lista
+  -------
+  Parámetros:
+  lista: lista de números a promediar
+  -------
+  Retorna: promedio de la lista
   """
   largo = len(list)
   sumatoria = 0
@@ -159,14 +193,13 @@ def promedio(list):
 def media_aritmetica(lista):
   """
   Código para calcular el promedio de una lista de números
-
+  ----------
   parámetros:
     lista: lista de números
     mitad_list: mitad de la lista
     mediana: numerador de la fracción de la mediana
-
-  retorna:
-    Mediana/2: mediana de la lista
+  ----------
+  retorna: mediana de la lista
   """
   mitad_list = len(lista)//2
   lista.sort()
@@ -178,6 +211,15 @@ def media_aritmetica(lista):
   return mediana
 
 def MAD(lista):
+  """
+  Función que calcula la Desviación Absoluta Media de una
+  lista de datos.
+  ----------
+  Parámetros:
+  lista: lista de numeros a calcular MAD
+  ----------
+  Retorna: MAD de una lista de datos como valor
+  """
   lista.sort()
   mediana = media_aritmetica(lista)
   sum = 0
@@ -186,6 +228,14 @@ def MAD(lista):
   return sum/len(lista)
 
 def moda(lista):
+  """
+  Función que calcula la moda de una lista de datos.
+  --------
+  Parámetros:
+  lista: lista de datos a calcular la moda de
+  -------
+  Retorna: Valor más comun de la lista como elemento de diccionario
+  """
   dic = {}
   for elemento in lista:
     if elemento in dic:
@@ -195,6 +245,15 @@ def moda(lista):
   return max(dic, key=dic.get), max(dic.values())
 
 def modas(lista):
+  """
+  Función que calcula la moda general de una lista de datos, o sea, 
+  la cantidad de cada valor dentro de la lista.
+  -------
+  Parámetros:
+  lista: lista de datos a calcluar las modas
+  -------
+  Retorna: todos los datos y sus cantidades respectiva en la lista como diccionario
+  """
   dic = {}
   for elemento in lista:
     if elemento in dic:
@@ -204,10 +263,26 @@ def modas(lista):
   return dic
 
 def rango(lista):
+  """
+  Función que calcula el rango de una lista
+  -----
+  Parámetros:
+  lista: lista a la que calcular el rango de
+  -----
+  Retorna: el valor del rango
+  """
   lista.sort()
   return lista[-1] - lista[0]
 
 def varianza(lista):
+  """
+  Función que calcula la varianza de una lista de datos
+  -------
+  Parámetros:
+  lista: lista a calcular la varianza de
+  -------
+  Retorna: valor de la varianza
+  """
   lista.sort()
   promedio_lista = promedio(lista)
   suma = 0
@@ -216,6 +291,14 @@ def varianza(lista):
   return suma / len(lista)
 
 def desviacion_estandar(lista):
+  """
+  Función que calcula la desviación estándar de una lista
+  -------
+  Parámetros:
+  lista: lista a calcular la desviación estándar de
+  -------
+  Retorna: valor de la desviación estándar
+  """
   return varianza(lista)**0.5
 
 def percentil(vals_in, q):
@@ -272,9 +355,21 @@ def iqr(vals_in):
     return None
 
 def FYD(lista):
+    """
+    Función que calcula el ancho de bines de una lista
+    ------
+    Parámetros:
+    lista: lista de la que calcular el ancho de bines
+    ------
+    Retorna: ancho de bines 
+    """
     return 2*iqr(lista)*len(lista)**(-1/3)
-
-def mse(x,y,theta): #minimum square error
+    
+#de aqui no uso las funciones, debo terminar de documentarlas
+def mse(x,y,theta):
+  """
+  Función que calcula el minimo error cuadrado de(...)
+  """
   m,b = theta
   res = [(y_i - (m*x_i+b)**2) for x_i, y_i in zip(x,y)]
   mse = sum(res) / len(x)
