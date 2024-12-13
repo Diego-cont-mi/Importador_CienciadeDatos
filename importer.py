@@ -26,7 +26,7 @@ def buscadorindexSTR(lista, nombre):
     
   return indices
     
-    def buscadorindexFLOAT(lista, nombre):
+def buscadorindexFLOAT(lista, nombre):
   """
   Toma una lista de cualquier cosa y busca el float a discresión consiguiendo una lista con 
   los indices donde ese float se encuentra
