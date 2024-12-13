@@ -8,6 +8,13 @@ Original file is located at
 """
 
 def buscadorindex(lista, nombre):
+  """
+  Toma una lista de cualquier cosa y busca el valor a discresión consiguiendo una lista con 
+  los indices donde ese valor se encuentra
+  ----------
+  parámetros:
+  lista: la lista a depurar
+  """
   indices = []
   for i in range(len(lista)):
     if str(nombre) in lista[i:]:
