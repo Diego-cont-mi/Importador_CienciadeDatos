@@ -7,19 +7,64 @@ Original file is located at
     https://colab.research.google.com/drive/1JxL1pIP62AScIkyLl8KsVygUK9pprr9J
 """
 
-def buscadorindex(lista, nombre):
+def buscadorindexSTR(lista, nombre):
   """
-  Toma una lista de cualquier cosa y busca el valor a discresión consiguiendo una lista con 
-  los indices donde ese valor se encuentra
+  Toma una lista de cualquier cosa y busca el string a discresión consiguiendo una lista con 
+  los indices donde ese string se encuentra
   ----------
   parámetros:
-  lista: la lista a depurar
+  lista: la lista de datos donde se consigue el string 
+  nombre: nombre del dato a buscar
+  ----------
+  retorna: lista de indices donde el valor buscado se encuentra dentro de la lista
   """
   indices = []
   for i in range(len(lista)):
     if str(nombre) in lista[i:]:
       if lista.index(str(nombre),i,len(lista)) not in indices:
         indices.append(lista.index(str(nombre),i,len(lista)))
+    else:
+      continue
+    
+  return indices
+    
+    def buscadorindexFLOAT(lista, nombre):
+  """
+  Toma una lista de cualquier cosa y busca el float a discresión consiguiendo una lista con 
+  los indices donde ese float se encuentra
+  ----------
+  parámetros:
+  lista: la lista de datos donde se consigue el float 
+  nombre: nombre del dato a buscar
+  ----------
+  retorna: lista de indices donde el valor buscado se encuentra dentro de la lista
+  """
+  indices = []
+  for i in range(len(lista)):
+    if int(nombre) in lista[i:]:
+      if lista.index(int(nombre),i,len(lista)) not in indices:
+        indices.append(lista.index(int(nombre),i,len(lista)))
+    else:
+      continue
+    
+  return indices
+
+def buscadorindexINT(lista, nombre):
+  """
+  Toma una lista de cualquier cosa y busca el integer a discresión consiguiendo una lista con 
+  los indices donde ese integer se encuentra
+  ----------
+  parámetros:
+  lista: la lista de datos donde se consigue el integer 
+  nombre: nombre del dato a buscar
+  ----------
+  retorna: lista de indices donde el valor buscado se encuentra dentro de la lista
+  """
+  indices = []
+  for i in range(len(lista)):
+    if int(nombre) in lista[i:]:
+      if lista.index(int(nombre),i,len(lista)) not in indices:
+        indices.append(lista.index(int(nombre),i,len(lista)))
     else:
       continue
     
