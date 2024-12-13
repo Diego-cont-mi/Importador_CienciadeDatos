@@ -70,31 +70,28 @@ def buscadorindexINT(lista, nombre):
     
 def correlacion(x,y):
   """
-  Función que calcula el coeficiente de correlación dadas 2 listas para ambos ejes
-  --------
-  Parámetros:
-  x: lista en el eje x
-  y: lista en el eje y
-  --------
-  nota: si o si deben ser listas
-  --------
-  retorna: coeficiente de correlación 
+  Función que calcula el coeficiente de correlación entre dos listas con datos numéricos
+  ---------------------------------------------
+  Input:
+    x: lista x con datos numérios
+    y: lista y con datos numéricos
+  Output:
+    r: valor numérico correspondiente al coeficiente de correlación entre x e y
   """
-  xmed = mim.media_aritmetica(x)
-  ymed = mim.media_aritmetica(y)
+  x_prom = mim.promedio(x)
+  y_prom = mim.promedio(y)
+  sum_num = 0
+  for i,j in zip(x,y):
+    sum_num += ((i-x_prom)*(j-y_prom))
 
-  numerador = 0
-  for i in range(len(x)):
-    numerador += (x[i]-xmed)*(y[i]-ymed)
-
-  denom = 0
-  for i in range(len(x)):
-    denom += (x[i]-xmed)**2
-
-  for i in range(len(y)):
-    denom += (y[i]-ymed)**2
-
-  return numerador / (denom**(1/2))
+  sum_denx = 0
+  sum_deny = 0
+  for i,j in zip(x,y):
+    sum_denx += (i-x_prom)**2
+    sum_deny += (j-y_prom)**2
+  den = ( sum_denx*sum_deny )**( 1/2 )
+  r = sum_num/den
+  return r
 
 def lecturageneral(nombre):
   """
