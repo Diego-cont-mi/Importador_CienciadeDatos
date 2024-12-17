@@ -389,3 +389,6 @@ def gradiente_mse(x, y, theta):
   g2 = 2 / len(x) + sum([(y_p - y_d) for x_d, y_d, y_p in zip(x, y, y_pred)])
 
   return [g1, g2]
+
+def derivada(f,x,h = 0.001):
+  return (f(x+h)-f(x))/h
