@@ -392,3 +392,34 @@ def gradiente_mse(x, y, theta):
 
 def derivada(f,x,h = 0.001):
   return (f(x+h)-f(x))/h
+
+
+#funcion para calcular derivadas parciales de cualquier polinomio
+def gradiente_mse_pol(x, y, theta):
+  #calcular predicciones del modelo con parámetros del input
+  y_pred = []
+  for xa in x:
+    yp = sum([ t*xv for xv,t in zip(xa, theta) ])
+    y_pred.append(yp)
+  #calcular derivadas parciales para cada atributo
+  derivadas = []
+  for i in range( len(x[0])):
+    g = 2/len(x[:,i]) * sum( [ (y_p - y_d) * x_d for x_d, y_d, y_p in zip(x[:,i], y ,y_pred) ] )
+    derivadas.append(g)
+  return derivadas
+
+def stutges(lista):
+  return np.log2(len(lista)) + 1
+
+def ajuste_lineal_exacto(x,y):
+  '''
+  Determina los parámetros de minimo cuadrado para
+  una ajuste lineal de la forma y = A + Bx usando
+  las ecuaciones normales
+  '''
+  x_sq = [xv**2 for xv in x]
+  x_y = [xv*yv for xv, yv in zip(x,y)]
+  delta = len(x) * sum(x_sq) - sum(x)**2
+  pendiente = (len(x) * sum(x_y) - sum(x) * sum(y)) / delta
+  intercepto = (sum(x_sq) * sum(y) - sum(x) * sum(x_y)) / delta
+  return pendiente, intercepto
