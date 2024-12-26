@@ -78,8 +78,8 @@ def correlacion(x,y):
   Output:
     r: valor numérico correspondiente al coeficiente de correlación entre x e y
   """
-  x_prom = mim.promedio(x)
-  y_prom = mim.promedio(y)
+  x_prom = np.mean(x)
+  y_prom = np.mean(y)
   sum_num = 0
   for i,j in zip(x,y):
     sum_num += ((i-x_prom)*(j-y_prom))
