@@ -423,3 +423,7 @@ def ajuste_lineal_exacto(x,y):
   pendiente = (len(x) * sum(x_y) - sum(x) * sum(y)) / delta
   intercepto = (sum(x_sq) * sum(y) - sum(x) * sum(x_y)) / delta
   return pendiente, intercepto
+
+
+def learning_schedule(t):
+    return t0 / (t + t1)
