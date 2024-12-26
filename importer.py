@@ -69,6 +69,7 @@ def buscadorindexINT(lista, nombre):
   return indices
     
 def correlacion(x,y):
+  import numpy as np
   """
   Función que calcula el coeficiente de correlación entre dos listas con datos numéricos
   ---------------------------------------------
