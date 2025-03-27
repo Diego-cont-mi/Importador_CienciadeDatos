@@ -428,3 +428,9 @@ def ajuste_lineal_exacto(x,y):
 
 def learning_schedule(t):
     return t0 / (t + t1)
+
+def factorial(n):
+    if n < 2:
+        return 1
+    else:
+        return n * factorial(n-1)
